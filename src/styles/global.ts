@@ -43,6 +43,10 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  body {
+    font-size: 1.6rem;
+  }
+
   body.using-mouse {
     * {
       outline: none !important;

@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
+import Home from '~/components/sections/Home';
 import Layout from '~/Layout';
 
 const IndexPage: FC = () => (
   <Layout>
-    <h1>Hi people</h1>
+    <Home />
   </Layout>
 );
 

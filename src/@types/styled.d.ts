@@ -10,6 +10,7 @@ declare module 'styled-components' {
       secundaryActive: string;
       secundaryActiveDark: string;
       background: string;
+      shadow: string;
       card: string;
     };
   }
