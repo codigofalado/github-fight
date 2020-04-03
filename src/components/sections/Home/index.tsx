@@ -11,8 +11,10 @@ const Home: FC = () => (
     <img src={logo} alt="github fight logo" />
 
     <div>
-      <Button>Start Battle</Button>
-      <Button secundary>Know more</Button>
+      <Button to="/battlefield">Start Battle</Button>
+      <Button to="#about" secundary disabled>
+        Know more
+      </Button>
     </div>
   </Container>
 );

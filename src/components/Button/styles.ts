@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
-interface Props {
+import { Link } from 'gatsby';
+
+export interface Props {
   secundary?: boolean;
+  disabled?: boolean;
+  to: string;
 }
 
-export const Container = styled.a<Props>`
+export const Container = styled(Link)<Props>`
   display: inline-block;
   cursor: pointer;
 
@@ -29,7 +33,7 @@ export const Container = styled.a<Props>`
   }
 
   &:active {
-    transform: scale(0.95) translateZ(0);
+    transform: scale(0.92) translateZ(0);
   }
 
   ${({ secundary, theme }) =>
@@ -41,5 +45,16 @@ export const Container = styled.a<Props>`
       &:hover {
         color: ${theme.colors.background};
       }
+    `};
+
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      color: ${theme.colors.secundaryText};
+      border-color: ${theme.colors.secundaryText};
+      background: ${theme.colors.background};
+
+      pointer-events: none;
+      box-shadow: none;
     `};
 `;
