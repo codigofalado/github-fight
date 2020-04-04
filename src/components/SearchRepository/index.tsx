@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
@@ -10,6 +10,10 @@ import { Container, SearchButton } from './styles';
 
 interface QueryData {
   repository: Data;
+}
+
+interface Props {
+  setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const QUERY = gql`
@@ -37,7 +41,7 @@ const QUERY = gql`
   }
 `;
 
-const SearchRepository: FC = () => {
+const SearchRepository: FC<Props> = ({ setDisabled }) => {
   const [text, setText] = useState('');
 
   const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
@@ -49,6 +53,10 @@ const SearchRepository: FC = () => {
       },
     }
   );
+
+  useEffect(() => {
+    setDisabled(!data || loading);
+  }, [setDisabled, loading, data]);
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);

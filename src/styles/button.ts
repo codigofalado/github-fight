@@ -7,6 +7,8 @@ export interface ButtonProps {
 
 export default css<ButtonProps>`
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.6rem;
 
   color: ${({ theme }) => theme.colors.background};
   background: ${({ theme }) => theme.colors.active};
@@ -39,8 +41,9 @@ export default css<ButtonProps>`
       }
     `};
 
-  ${({ disabled, theme }) =>
+  ${({ secundary, disabled, theme }) =>
     disabled &&
+    secundary &&
     css`
       color: ${theme.colors.secundaryText};
       border-color: ${theme.colors.secundaryText};

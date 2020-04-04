@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import button, { ButtonProps } from '~/styles/button';
 import card from '~/styles/card';
@@ -51,4 +51,14 @@ export const SearchButton = styled.button.attrs({
 
   background: ${({ theme }) => theme.colors.secundaryActive};
   border: none;
+
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      color: ${theme.colors.background};
+      background: ${theme.colors.secundaryText};
+
+      pointer-events: none;
+      box-shadow: none;
+    `};
 `;
