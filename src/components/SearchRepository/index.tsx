@@ -1,17 +1,80 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+
+import { useLazyQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+import Repository, { Data } from '../Repository';
 
 import { Container, SearchButton } from './styles';
 
-const SearchRepository: FC = () => (
-  <Container>
-    <div>
-      <input type="text" placeholder="author/repository" />
-      <SearchButton>
-        <FaSearch size={24} />
-      </SearchButton>
-    </div>
-  </Container>
-);
+interface QueryData {
+  repository: Data;
+}
+
+const QUERY = gql`
+  query repository($owner: String!, $repo: String!) {
+    repository(owner: $owner, name: $repo) {
+      owner {
+        avatarUrl
+        login
+      }
+      name
+      description
+      issues {
+        totalCount
+      }
+      pullRequests {
+        totalCount
+      }
+      stars: stargazers {
+        totalCount
+      }
+      forks {
+        totalCount
+      }
+    }
+  }
+`;
+
+const SearchRepository: FC = () => {
+  const [text, setText] = useState('');
+
+  const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
+    QUERY,
+    {
+      variables: {
+        owner: text.split('/')[0],
+        repo: text.split('/')[1],
+      },
+    }
+  );
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setText(e.target.value);
+  }
+
+  function handleSearch() {
+    getRepository();
+  }
+
+  return (
+    <Container>
+      <div>
+        <input
+          type="text"
+          placeholder="author/repository"
+          value={text}
+          onChange={handleInputChange}
+        />
+        <SearchButton onClick={handleSearch}>
+          <FaSearch size={24} />
+        </SearchButton>
+      </div>
+
+      {data && !loading && <Repository data={data.repository} />}
+    </Container>
+  );
+};
 
 export default SearchRepository;

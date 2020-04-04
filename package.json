@@ -5,7 +5,10 @@
   "version": "0.1.0",
   "author": "Henrique M. Miranda <me@thehenry.dev>",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.4",
+    "apollo-boost": "^0.4.7",
     "babel-plugin-polished": "^1.1.0",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.19.9",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.39",
@@ -20,10 +23,14 @@
     "gatsby-plugin-styled-components": "^3.1.18",
     "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-source-graphql": "2.1.32",
     "gatsby-transformer-sharp": "^2.3.13",
+    "graphql-tag": "^2.10.3",
     "gsap": "^3.2.6",
+    "isomorphic-fetch": "^2.2.1",
     "polished": "^3.5.1",
     "react": "^16.12.0",
+    "react-apollo": "^3.1.4",
     "react-dom": "^16.12.0",
     "react-helmet-async": "^1.0.4",
     "react-icons": "^3.9.0",
@@ -31,6 +38,7 @@
     "typeface-lato": "^0.0.75"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
     "@types/node": "^13.5.1",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",

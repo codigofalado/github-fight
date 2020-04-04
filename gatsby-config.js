@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 
 const siteMetadata = require('./config/metadata');
@@ -21,10 +23,21 @@ module.exports = {
         name: 'Github Fight',
         short_name: 'Github Fight',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#B23F42',
+        theme_color: '#B23F42',
         display: 'minimal-ui',
         icon: 'src/assets/icon.png',
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'GitHub',
+        fieldName: 'github',
+        url: 'https://api.github.com/graphql',
+        headers: {
+          Authorization: `token ${process.env.GITHUB_TOKEN}`,
+        },
       },
     },
     {
