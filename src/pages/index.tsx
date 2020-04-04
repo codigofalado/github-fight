@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
-import Home from '~/components/sections/Home';
 import Layout from '~/Layout';
+
+import Home from '~/components/sections/Home';
 
 const IndexPage: FC = () => (
   <Layout>
