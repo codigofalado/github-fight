@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 
-import Layout from '~/Layout';
+import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import Fighter from '~/components/Fighter';
+import Layout from '~/Layout';
 
-import RepositoryContext from '~/context/RepositoryContext';
+import RepositoryContext from '~/contexts/RepositoryContext';
 
 import { Container } from './styles';
-
-import { useQuery } from '@apollo/react-hooks';
 
 interface QueryData {
   repository: {

@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { useLazyQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import RepositoryContext from '~/context/RepositoryContext';
+import RepositoryContext from '~/contexts/RepositoryContext';
 
 import Repository, { Data } from '../Repository';
 

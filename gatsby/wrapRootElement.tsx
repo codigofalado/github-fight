@@ -3,8 +3,8 @@ import { ApolloProvider } from 'react-apollo';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 
-import { client } from '../src/context/ApolloContext';
-import { RepositoryProvider } from '../src/context/RepositoryContext';
+import { client } from '../src/contexts/ApolloContext';
+import { RepositoryProvider } from '../src/contexts/RepositoryContext';
 import theme from '../src/styles/theme';
 
 interface Props {

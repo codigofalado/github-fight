@@ -1,8 +1,7 @@
 import React, { FC, useState } from 'react';
 
-import Layout from '~/Layout';
-
 import SearchRepository from '~/components/SearchRepository';
+import Layout from '~/Layout';
 
 import { Container, ButtonGroup, NextButton } from './styles';
 

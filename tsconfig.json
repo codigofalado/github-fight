@@ -13,8 +13,8 @@
     "allowJs": true,
     "baseUrl": "src",
     "paths": {
-      "~/*" : ["*"]
+      "~/*": ["*"],
     }
   },
-  "exclude": ["node_modules", "public", ".cache"],
+  "exclude": ["node_modules", "public", ".cache"]
 }
