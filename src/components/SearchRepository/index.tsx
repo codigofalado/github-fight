@@ -22,7 +22,7 @@ const QUERY = gql`
   query repository($owner: String!, $repoName: String!) {
     repository(owner: $owner, name: $repoName) {
       owner {
-        avatarUrl
+        avatarUrl(size: 120)
         login
       }
       name
@@ -30,7 +30,7 @@ const QUERY = gql`
       issues {
         totalCount
       }
-      pullRequests {
+      pullRequests(states: OPEN) {
         totalCount
       }
       stars: stargazers {
@@ -45,9 +45,14 @@ const QUERY = gql`
 
 const SearchRepository: FC<Props> = ({ setDisabled }) => {
   const [text, setText] = useState('');
-  const { owner, setOwner, repoName, setRepoName } = useContext(
-    RepositoryContext
-  );
+  const {
+    owner,
+    setOwner,
+    repoName,
+    setRepoName,
+    pullCount,
+    setPullCount,
+  } = useContext(RepositoryContext);
 
   const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
     QUERY,
@@ -62,10 +67,14 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
   useEffect(() => {
     const name = data?.repository?.name;
     const login = data?.repository?.owner?.login;
+    const totalCount = data?.repository?.pullRequests?.totalCount;
 
     if (login && login !== owner) setOwner(login);
+
     if (name && name !== repoName) setRepoName(name);
-  }, [data, setOwner, setRepoName, owner, repoName]);
+
+    if (totalCount && totalCount !== pullCount) setPullCount(totalCount);
+  }, [data, setOwner, setRepoName, owner, repoName, pullCount, setPullCount]);
 
   useEffect(() => {
     setDisabled(!data || loading);

@@ -41,13 +41,24 @@ export default css<ButtonProps>`
       }
     `};
 
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      color: ${theme.colors.background};
+      background: ${theme.colors.secundaryText};
+      border-color: ${theme.colors.secundaryText};
+
+      pointer-events: none;
+      box-shadow: none;
+    `};
+
   ${({ secundary, disabled, theme }) =>
     disabled &&
     secundary &&
     css`
       color: ${theme.colors.secundaryText};
-      border-color: ${theme.colors.secundaryText};
       background: ${theme.colors.background};
+      border-color: ${theme.colors.secundaryText};
 
       pointer-events: none;
       box-shadow: none;
