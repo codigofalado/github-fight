@@ -1,8 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+
+import RepositoryContext from '~/context/RepositoryContext';
 
 import Repository, { Data } from '../Repository';
 
@@ -17,8 +19,8 @@ interface Props {
 }
 
 const QUERY = gql`
-  query repository($owner: String!, $repo: String!) {
-    repository(owner: $owner, name: $repo) {
+  query repository($owner: String!, $repoName: String!) {
+    repository(owner: $owner, name: $repoName) {
       owner {
         avatarUrl
         login
@@ -43,16 +45,27 @@ const QUERY = gql`
 
 const SearchRepository: FC<Props> = ({ setDisabled }) => {
   const [text, setText] = useState('');
+  const { owner, setOwner, repoName, setRepoName } = useContext(
+    RepositoryContext
+  );
 
   const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
     QUERY,
     {
       variables: {
         owner: text.split('/')[0],
-        repo: text.split('/')[1],
+        repoName: text.split('/')[1],
       },
     }
   );
+
+  useEffect(() => {
+    const name = data?.repository?.name;
+    const login = data?.repository?.owner?.login;
+
+    if (login && login !== owner) setOwner(login);
+    if (name && name !== repoName) setRepoName(name);
+  }, [data, setOwner, setRepoName, owner, repoName]);
 
   useEffect(() => {
     setDisabled(!data || loading);

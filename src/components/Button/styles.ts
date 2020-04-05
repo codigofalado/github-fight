@@ -6,6 +6,7 @@ import button, { ButtonProps } from '~/styles/button';
 
 export interface Props extends ButtonProps {
   to: string;
+  className?: string;
 }
 
 export const Container = styled(Link)<Props>`

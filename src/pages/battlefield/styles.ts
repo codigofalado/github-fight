@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import { SearchButton } from '~/components/SearchRepository/styles';
-
-import { ButtonProps } from '~/styles/button';
+import Button from '~/components/Button';
 
 export const Container = styled.div`
   display: flex;
@@ -19,10 +17,14 @@ export const Container = styled.div`
   }
 `;
 
-export const NextButton = styled(SearchButton)<ButtonProps>`
-  width: auto;
-  min-width: auto;
+export const ButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  width: 100%;
+`;
+
+export const NextButton = styled(Button)`
   padding: 0 24px;
-  margin-left: auto;
 `;

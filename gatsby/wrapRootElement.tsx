@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 
 import { client } from '../src/context/ApolloContext';
+import { RepositoryProvider } from '../src/context/RepositoryContext';
 import theme from '../src/styles/theme';
 
 interface Props {
@@ -13,7 +14,9 @@ interface Props {
 export const wrapRootElement: FC<Props> = ({ element }) => (
   <HelmetProvider>
     <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>{element}</ApolloProvider>
+      <ApolloProvider client={client}>
+        <RepositoryProvider>{element}</RepositoryProvider>
+      </ApolloProvider>
     </ThemeProvider>
   </HelmetProvider>
 );
