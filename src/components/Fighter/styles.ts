@@ -1,16 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import card from '~/styles/card';
 
+interface Props {
+  selected?: boolean;
+}
+
 export const Container = styled(card).attrs({
   as: 'li',
-})`
+})<Props>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
-  padding: 24px 32px;
+  border: 1px solid ${({ theme }) => theme.colors.card};
+  padding: 22px 32px;
   margin: 0;
+
+  transition: 0.2s ease;
 
   &:first-of-type {
     margin-top: 64px;
@@ -41,4 +48,14 @@ export const Container = styled(card).attrs({
   button {
     margin-left: auto;
   }
+
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      border-color: ${theme.colors.active};
+
+      button {
+        background: ${theme.colors.active};
+      }
+    `}
 `;
