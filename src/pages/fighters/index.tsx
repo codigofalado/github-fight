@@ -8,6 +8,8 @@ import Layout from '~/Layout';
 
 import RepositoryContext from '~/contexts/RepositoryContext';
 
+import { ButtonGroup, NextButton } from '../battlefield/styles';
+
 import { Container } from './styles';
 
 interface QueryData {
@@ -74,6 +76,10 @@ function Fighters() {
               <Fighter data={pull} key={pull.id} />
             ))}
         </ul>
+        <ButtonGroup>
+          <NextButton to="/battlefield">Back</NextButton>
+          <NextButton to="/result">Next</NextButton>
+        </ButtonGroup>
       </Container>
     </Layout>
   );

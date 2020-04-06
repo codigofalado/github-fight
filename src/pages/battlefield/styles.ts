@@ -22,6 +22,8 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  margin: 80px 0 40px;
+
   width: 100%;
 `;
 

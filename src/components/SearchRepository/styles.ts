@@ -4,6 +4,8 @@ import button, { ButtonProps } from '~/styles/button';
 import card from '~/styles/card';
 
 export const Container = styled(card)`
+  margin-bottom: 0;
+
   div:first-of-type {
     display: flex;
     align-items: center;
