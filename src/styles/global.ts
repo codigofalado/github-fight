@@ -57,8 +57,9 @@ export default createGlobalStyle`
     position: relative;
 
     margin: 0 auto;
+    padding: 0 32px;
 
-    max-width: 1440;
+    max-width: 1234px;
     min-height: 100%;
   }
 

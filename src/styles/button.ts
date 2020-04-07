@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export interface ButtonProps {
   secundary?: boolean;
@@ -63,4 +63,14 @@ export default css<ButtonProps>`
       pointer-events: none;
       box-shadow: none;
     `};
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 80px 0 40px;
+
+  width: 100%;
 `;

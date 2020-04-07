@@ -8,7 +8,6 @@ export const Header = styled.header`
   justify-content: space-between;
 
   width: 100%;
-  max-width: 1170px;
 
   div {
     margin: 32px 0;

@@ -3,14 +3,14 @@ import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+import Button from '~/components/Button';
 import Fighter from '~/components/Fighter';
 import Layout from '~/Layout';
 
 import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
 
-import { ButtonGroup, NextButton } from '../battlefield/styles';
-
 import { Container } from './styles';
+import { ButtonGroup } from '~/styles/button';
 
 interface QueryData {
   repository: {
@@ -81,10 +81,10 @@ function Fighters() {
             ))}
         </ul>
         <ButtonGroup>
-          <NextButton to="/battlefield">Back</NextButton>
-          <NextButton to="/result" disabled={ButtonIsDisabled}>
+          <Button to="/battlefield">Back</Button>
+          <Button to="/result" disabled={ButtonIsDisabled}>
             Next
-          </NextButton>
+          </Button>
         </ButtonGroup>
       </Container>
     </Layout>

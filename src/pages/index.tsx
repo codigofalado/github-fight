@@ -4,7 +4,7 @@ import Home from '~/components/sections/Home';
 import Layout from '~/Layout';
 
 const IndexPage: FC = () => (
-  <Layout>
+  <Layout title="Home">
     <Home />
   </Layout>
 );
