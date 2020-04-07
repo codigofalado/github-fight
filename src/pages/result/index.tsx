@@ -27,7 +27,7 @@ const Result: FC = () => {
   );
 
   return (
-    <Layout>
+    <Layout title="Result">
       <Header>
         <div>
           <h1>{owner}</h1>

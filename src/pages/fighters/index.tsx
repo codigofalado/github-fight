@@ -70,7 +70,7 @@ function Fighters() {
   const ButtonIsDisabled = fighters.length <= 1;
 
   return (
-    <Layout>
+    <Layout title="Fighters">
       <Container>
         <h1>Select the Fighters</h1>
         <ul>

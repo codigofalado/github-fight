@@ -9,7 +9,7 @@ const Battlefield: FC = () => {
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <Layout>
+    <Layout title="Battlefield">
       <Container>
         <h1>Select the battlefield repository</h1>
         <SearchRepository setDisabled={setDisabled} />

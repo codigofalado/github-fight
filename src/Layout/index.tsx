@@ -4,10 +4,14 @@ import SEO from '~/components/SEO';
 
 import GlobalStyle from '~/styles/global';
 
-const Layout: FC = ({ children }) => (
+interface Props {
+  title: string;
+}
+
+const Layout: FC<Props> = ({ children, title }) => (
   <>
     <GlobalStyle />
-    <SEO title="Home" />
+    <SEO title={title} />
     {children}
   </>
 );
