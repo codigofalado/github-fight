@@ -31,7 +31,7 @@ const QUERY = gql`
       owner {
         login
       }
-      pullRequests(states: CLOSED, first: $pullCount) {
+      pullRequests(states: OPEN, first: $pullCount) {
         nodes {
           id
           title
@@ -40,6 +40,14 @@ const QUERY = gql`
             avatarUrl(size: 80)
             login
           }
+          reactions(first: 100) {
+            totalCount
+            nodes {
+              user {
+                login
+              }
+            }
+          }
         }
       }
     }
@@ -47,7 +55,9 @@ const QUERY = gql`
 `;
 
 function Fighters() {
-  const { owner, repoName, pullCount } = useContext(RepositoryContext);
+  const { owner, repoName, pullCount, fighters } = useContext(
+    RepositoryContext
+  );
 
   const { data, loading } = useQuery<QueryData>(QUERY, {
     variables: {
@@ -56,6 +66,8 @@ function Fighters() {
       pullCount,
     },
   });
+
+  const ButtonIsDisabled = fighters.length <= 1;
 
   return (
     <Layout>
@@ -70,7 +82,9 @@ function Fighters() {
         </ul>
         <ButtonGroup>
           <NextButton to="/battlefield">Back</NextButton>
-          <NextButton to="/result">Next</NextButton>
+          <NextButton to="/result" disabled={ButtonIsDisabled}>
+            Next
+          </NextButton>
         </ButtonGroup>
       </Container>
     </Layout>

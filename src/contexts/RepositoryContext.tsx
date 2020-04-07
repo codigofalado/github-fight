@@ -10,6 +10,14 @@ export interface PullRequest {
     avatarUrl: string;
     login: string;
   };
+  reactions: {
+    totalCount: number;
+    nodes: {
+      user: {
+        login: string;
+      };
+    }[];
+  };
 }
 
 interface ContextValue {
