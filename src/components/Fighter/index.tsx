@@ -1,45 +1,33 @@
-import React, {
-  forwardRef,
-  RefForwardingComponent,
-  useState,
-  useImperativeHandle,
-} from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
+
+import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
 
 import { SearchButton } from '../SearchRepository/styles';
 
 import { Container } from './styles';
 
-interface Pull {
-  id: string;
-  title: string;
-  number: number;
-  author: {
-    avatarUrl: string;
-    login: string;
-  };
-}
-
-export interface FighterRef {
-  isSelected: boolean;
-}
-
 interface Props {
-  data: Pull;
+  data: PullRequest;
 }
 
-const Fighter: RefForwardingComponent<FighterRef, Props> = ({ data }, ref) => {
+const Fighter: FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState(false);
+  const { fighters, setFighters } = useContext(RepositoryContext);
 
   const Icon = selected ? FaCheck : FaPlus;
 
   function toogleSelected() {
+    if (!selected && !fighters.includes(data)) {
+      setFighters([...fighters, data]);
+    }
+
+    if (selected && fighters.includes(data)) {
+      setFighters(fighters.filter(fighter => fighter.id !== data.id));
+    }
+
     setSelected(!selected);
   }
-
-  useImperativeHandle(ref, () => ({
-    isSelected: selected,
-  }));
 
   return (
     <Container selected={selected}>
@@ -57,4 +45,4 @@ const Fighter: RefForwardingComponent<FighterRef, Props> = ({ data }, ref) => {
   );
 };
 
-export default forwardRef(Fighter);
+export default Fighter;

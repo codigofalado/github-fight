@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 import Fighter from '~/components/Fighter';
 import Layout from '~/Layout';
 
-import RepositoryContext from '~/contexts/RepositoryContext';
+import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
 
 import { ButtonGroup, NextButton } from '../battlefield/styles';
 
@@ -19,15 +19,7 @@ interface QueryData {
     };
     name: string;
     pullRequests: {
-      nodes: {
-        id: string;
-        title: string;
-        number: number;
-        author: {
-          avatarUrl: string;
-          login: string;
-        };
-      }[];
+      nodes: PullRequest[];
     };
   };
 }
