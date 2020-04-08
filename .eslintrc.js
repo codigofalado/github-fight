@@ -22,6 +22,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
     allowImportExportEverywhere: true,
+    project: './tsconfig.json',
+    tsconfigRootDir: '.',
   },
   plugins: [
     'react',

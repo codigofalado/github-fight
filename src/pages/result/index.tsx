@@ -35,7 +35,16 @@ const Result: FC = () => {
         </div>
         <img src={trophy} alt="Trophy icon" />
       </Header>
-      <Podium />
+      <Podium>
+        {placing.slice(0, 3).map((fighter, index) => (
+          <li key={`podium_${fighter.id}`}>
+            <strong>
+              {index + 1}º - {fighter.points}
+            </strong>
+            {fighter.author.login}
+          </li>
+        ))}
+      </Podium>
       <Rank>
         {placing.map((fighter, index) => (
           <Position key={fighter.id}>

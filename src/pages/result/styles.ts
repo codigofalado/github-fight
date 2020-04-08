@@ -29,7 +29,51 @@ export const Header = styled.header`
   }
 `;
 
-export const Podium = styled.section``;
+export const Podium = styled.ol`
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  position: relative;
+
+  max-width: 611px;
+  margin: 30px auto 60px auto;
+
+  li {
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 700;
+
+    strong {
+      display: block;
+      margin-bottom: 8px;
+      color: ${({ theme }) => theme.colors.active};
+    }
+  }
+
+  li:nth-of-type(1) {
+    grid-column: 2/2;
+  }
+
+  li:nth-of-type(2) {
+    grid-column: 1/1;
+  }
+
+  li:nth-of-type(3) {
+    grid-column: 3/3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: ${({ theme }) => theme.colors.secundaryText};
+
+    left: 0;
+    bottom: -30px;
+
+    height: 2px;
+    width: 100%;
+    border-radius: 1px;
+  }
+`;
 
 export const Rank = styled.ol`
   display: flex;
@@ -50,13 +94,7 @@ export const Position = styled(card).attrs({
 
   transition: 0.2s ease;
 
-  &:first-of-type {
-    margin-top: 64px;
-  }
-
-  & + & {
-    margin-top: 32px;
-  }
+  margin-top: 32px;
 
   > span {
     font-size: 4.8rem;

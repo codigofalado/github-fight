@@ -63,7 +63,7 @@ function Fighters() {
     variables: {
       owner,
       repoName,
-      pullCount,
+      pullCount: pullCount > 100 ? 100 : pullCount,
     },
   });
 
