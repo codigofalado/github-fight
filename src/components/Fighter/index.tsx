@@ -17,7 +17,7 @@ const Fighter: FC<Props> = ({ data }) => {
 
   const Icon = selected ? FaCheck : FaPlus;
 
-  function toogleSelected() {
+  function toogleSelected(): void {
     if (!selected && !fighters.includes(data)) {
       setFighters([...fighters, data]);
     }
@@ -34,9 +34,7 @@ const Fighter: FC<Props> = ({ data }) => {
       <img src={data.author.avatarUrl} alt={data.author.login} />
       <div>
         <h2>{data.author.login}</h2>
-        <p>
-          #{data.number} - {data.title}
-        </p>
+        <p>{`#${data.number} - ${data.title}`}</p>
       </div>
       <SearchButton onClick={toogleSelected}>
         <Icon size={24} />

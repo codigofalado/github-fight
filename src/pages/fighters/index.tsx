@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, FC } from 'react';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -54,9 +54,9 @@ const QUERY = gql`
   }
 `;
 
-function Fighters() {
+const Fighters: FC = () => {
   const { owner, repoName, pullCount, fighters } = useContext(
-    RepositoryContext
+    RepositoryContext,
   );
 
   const { data, loading } = useQuery<QueryData>(QUERY, {
@@ -89,6 +89,6 @@ function Fighters() {
       </Container>
     </Layout>
   );
-}
+};
 
 export default Fighters;

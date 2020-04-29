@@ -33,16 +33,20 @@ const Repository: FC<Props> = ({ data }) => (
 
     <ul>
       <li>
-        Stars <strong>{data.stars.totalCount}</strong>
+        Stars&nbsp;
+        <strong>{data.stars.totalCount}</strong>
       </li>
       <li>
-        Forks <strong>{data.forks.totalCount}</strong>
+        Forks&nbsp;
+        <strong>{data.forks.totalCount}</strong>
       </li>
       <li>
-        Issues <strong>{data.issues.totalCount}</strong>
+        Issues&nbsp;
+        <strong>{data.issues.totalCount}</strong>
       </li>
       <li>
-        Pull Requests <strong>{data.pullRequests.totalCount}</strong>
+        Pull Requests&nbsp;
+        <strong>{data.pullRequests.totalCount}</strong>
       </li>
     </ul>
   </Container>

@@ -31,16 +31,7 @@ interface ContextValue {
   setFighters: SetState<PullRequest[]>;
 }
 
-const RepositoryContext = React.createContext<ContextValue>({
-  owner: '',
-  repoName: '',
-  pullCount: 0,
-  fighters: [],
-  setOwner: () => {},
-  setRepoName: () => {},
-  setPullCount: () => {},
-  setFighters: () => {},
-});
+const RepositoryContext = React.createContext<ContextValue>({} as ContextValue);
 
 const RepositoryProvider: FC = ({ children }) => {
   const [owner, setOwner] = useState('');

@@ -61,7 +61,7 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
         owner: text.split('/')[0],
         repoName: text.split('/')[1],
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -80,11 +80,11 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
     setDisabled(!data || loading);
   }, [setDisabled, loading, data]);
 
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setText(e.target.value);
   }
 
-  function handleSearch() {
+  function handleSearch(): void {
     getRepository();
   }
 
