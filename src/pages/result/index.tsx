@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import Layout from '~/Layout';
 
-import { useRepository } from '~/contexts/repository';
+import { useRepository } from '~/hooks/repository';
 
 import trophy from '~/assets/trophy.svg';
 

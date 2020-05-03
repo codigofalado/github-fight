@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 
-import { PullRequest, useRepository } from '~/contexts/repository';
+import { PullRequest, useRepository } from '~/hooks/repository';
 
 import { SearchButton } from '../SearchRepository/styles';
 

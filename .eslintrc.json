@@ -71,6 +71,7 @@
           "/^(react|styled-components)/",
           "module",
           ["/^~/components/", "/^~/Layout/"],
+          "/^~/hooks/",
           "/^~/contexts/",
           ["parent", "sibling", "index"],
           "/^~/assets/",

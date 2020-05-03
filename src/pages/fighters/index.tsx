@@ -7,7 +7,7 @@ import Button from '~/components/Button';
 import Fighter from '~/components/Fighter';
 import Layout from '~/Layout';
 
-import { PullRequest, useRepository } from '~/contexts/repository';
+import { PullRequest, useRepository } from '~/hooks/repository';
 
 import { Container } from './styles';
 import { ButtonGroup } from '~/styles/button';
