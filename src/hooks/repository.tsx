@@ -6,6 +6,7 @@ export interface PullRequest {
   id: string;
   title: string;
   number: number;
+  url: string;
   author: {
     avatarUrl: string;
     login: string;

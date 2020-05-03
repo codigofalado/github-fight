@@ -6,33 +6,44 @@ import card from '~/styles/card';
 export const Container = styled(card)`
   margin-bottom: 0;
 
-  div:first-of-type {
+  form {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
-    input {
-      height: 44px;
-      outline-color: ${({ theme }) => theme.colors.active};
-
-      border: 1px solid ${({ theme }) => theme.colors.secundaryActive};
-      border-radius: 4px;
-
-      padding: 0 16px;
-      margin-right: 51px;
-
+    div {
       width: 100%;
       max-width: 475px;
-      font-size: 1.6rem;
-      color: ${({ theme }) => theme.colors.primaryText};
+      margin-right: 50px;
 
-      ::placeholder {
-        color: ${({ theme }) => theme.colors.secundaryText};
+      input {
+        height: 44px;
+        outline-color: ${({ theme }) => theme.colors.active};
+
+        border: 1px solid ${({ theme }) => theme.colors.secundaryActive};
+        border-radius: 4px;
+
+        padding: 0 16px;
+
+        width: 100%;
+        max-width: 475px;
+        font-size: 1.6rem;
+        color: ${({ theme }) => theme.colors.primaryText};
+
+        ::placeholder {
+          color: ${({ theme }) => theme.colors.secundaryText};
+        }
+
+        &:hover {
+          outline: none;
+          border-color: ${({ theme }) => theme.colors.active};
+        }
       }
 
-      &:hover {
-        outline: none;
-        border-color: ${({ theme }) => theme.colors.active};
+      p {
+        color: ${({ theme }) => theme.colors.error};
+        margin-top: 8px;
+        font-size: 1.4rem;
       }
     }
   }
@@ -52,7 +63,7 @@ const roulette = keyframes`
 `;
 
 export const SearchButton = styled.button.attrs({
-  type: 'button',
+  type: 'submit',
 })<SearchButtonProps>`
   ${button}
 

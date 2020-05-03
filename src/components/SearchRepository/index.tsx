@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useMemo } from 'react';
 import { FaSearch, FaSpinner } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
@@ -21,6 +21,7 @@ interface Props {
 const QUERY = gql`
   query repository($owner: String!, $repoName: String!) {
     repository(owner: $owner, name: $repoName) {
+      url
       owner {
         avatarUrl(size: 120)
         login
@@ -54,7 +55,7 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
     setPullCount,
   } = useRepository();
 
-  const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
+  const [getRepository, { data, loading, error }] = useLazyQuery<QueryData, {}>(
     QUERY,
     {
       variables: {
@@ -63,6 +64,18 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
       },
     },
   );
+
+  const errorMessage = useMemo(() => {
+    if (!text) {
+      return 'Typed one repository, ex: codigofalado/desafio333';
+    }
+
+    if (error?.graphQLErrors[0].path) {
+      return error?.message.split('GraphQL error: ');
+    }
+
+    return 'Make sure you typed the right repository, ex: codigofalado/desafio333';
+  }, [text, error]);
 
   useEffect(() => {
     const name = data?.repository?.name;
@@ -84,23 +97,28 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
     setText(e.target.value);
   }
 
-  function handleSearch(): void {
+  function handleSearch(e: React.FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
+
     getRepository();
   }
 
   return (
     <Container>
-      <div>
-        <input
-          type="text"
-          placeholder="author/repository"
-          value={text}
-          onChange={handleInputChange}
-        />
-        <SearchButton onClick={handleSearch} isLoading={loading}>
+      <form onSubmit={handleSearch}>
+        <div>
+          <input
+            type="text"
+            placeholder="author/repository"
+            value={text}
+            onChange={handleInputChange}
+          />
+          {error && <p>{errorMessage}</p>}
+        </div>
+        <SearchButton isLoading={loading}>
           {loading ? <FaSpinner size={24} /> : <FaSearch size={24} />}
         </SearchButton>
-      </div>
+      </form>
 
       {data && !loading && <Repository data={data.repository} />}
     </Container>

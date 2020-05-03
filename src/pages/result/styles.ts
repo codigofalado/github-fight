@@ -79,6 +79,8 @@ export const Rank = styled.ol`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-bottom: 64px;
 `;
 
 export const Position = styled(card).attrs({
