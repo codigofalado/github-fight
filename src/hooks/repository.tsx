@@ -1,12 +1,12 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 export interface PullRequest {
   id: string;
+  url: string;
   title: string;
   number: number;
-  url: string;
   author: {
     avatarUrl: string;
     login: string;

@@ -86,61 +86,69 @@ export const Rank = styled.ol`
 export const Position = styled(card).attrs({
   as: 'li',
 })`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
   border: 1px solid ${({ theme }) => theme.colors.card};
-  padding: 22px 32px;
-  margin: 0;
 
+  margin: 0;
+  padding: 0;
+  margin-top: 32px;
   transition: 0.2s ease;
 
-  margin-top: 32px;
-
-  > span {
-    font-size: 4.8rem;
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors.active};
-  }
-
-  img {
-    width: 80px;
-    height: 80px;
-    min-width: 80px;
-
-    margin: 0 32px;
-    border-radius: 50%;
-    border: 3px solid ${({ theme }) => theme.colors.active};
-  }
-
-  h3 {
-    font-size: 2.4rem;
-  }
-
-  p {
-    margin: 8px 32px 0 0;
-    color: ${({ theme }) => theme.colors.secundaryText};
-  }
-
-  div:nth-of-type(2) {
+  a {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    box-sizing: content-box;
 
-    margin-left: auto;
-    font-size: 2.4rem;
-    color: ${({ theme }) => theme.colors.active};
-  }
+    padding: 22px 32px;
 
-  &:nth-child(even) {
-    > span,
-    div:nth-of-type(2) {
-      color: ${({ theme }) => theme.colors.secundaryActive};
+    > span {
+      font-size: 4.8rem;
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors.active};
     }
 
     img {
-      border-color: ${({ theme }) => theme.colors.secundaryActive};
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+
+      margin: 0 32px;
+      border-radius: 50%;
+      border: 3px solid ${({ theme }) => theme.colors.active};
     }
+
+    h3 {
+      font-size: 2.4rem;
+    }
+
+    p {
+      margin: 8px 32px 0 0;
+      color: ${({ theme }) => theme.colors.secundaryText};
+    }
+
+    div:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin-left: auto;
+      font-size: 2.4rem;
+      color: ${({ theme }) => theme.colors.active};
+    }
+
+    &:nth-child(even) {
+      > span,
+      div:nth-of-type(2) {
+        color: ${({ theme }) => theme.colors.secundaryActive};
+      }
+
+      img {
+        border-color: ${({ theme }) => theme.colors.secundaryActive};
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateX(14px) translateZ(0);
   }
 `;

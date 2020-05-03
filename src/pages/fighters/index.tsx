@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -27,6 +27,7 @@ interface QueryData {
 const QUERY = gql`
   query repository($owner: String!, $repoName: String!, $pullCount: Int!) {
     repository(owner: $owner, name: $repoName) {
+      url
       name
       owner {
         login
@@ -34,6 +35,7 @@ const QUERY = gql`
       pullRequests(states: OPEN, first: $pullCount) {
         nodes {
           id
+          url
           title
           number
           author {
