@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect, useContext } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import RepositoryContext from '~/contexts/RepositoryContext';
+import { useRepository } from '~/contexts/repository';
 
 import Repository, { Data } from '../Repository';
 
@@ -52,7 +52,7 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
     setRepoName,
     pullCount,
     setPullCount,
-  } = useContext(RepositoryContext);
+  } = useRepository();
 
   const [getRepository, { data, loading }] = useLazyQuery<QueryData, {}>(
     QUERY,

@@ -1,4 +1,4 @@
-import React, { useContext, FC } from 'react';
+import React, { FC } from 'react';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -7,7 +7,7 @@ import Button from '~/components/Button';
 import Fighter from '~/components/Fighter';
 import Layout from '~/Layout';
 
-import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
+import { PullRequest, useRepository } from '~/contexts/repository';
 
 import { Container } from './styles';
 import { ButtonGroup } from '~/styles/button';
@@ -55,9 +55,7 @@ const QUERY = gql`
 `;
 
 const Fighters: FC = () => {
-  const { owner, repoName, pullCount, fighters } = useContext(
-    RepositoryContext,
-  );
+  const { owner, repoName, pullCount, fighters } = useRepository();
 
   const { data, loading } = useQuery<QueryData>(QUERY, {
     variables: {

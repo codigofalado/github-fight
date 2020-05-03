@@ -1,7 +1,7 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 
-import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
+import { PullRequest, useRepository } from '~/contexts/repository';
 
 import { SearchButton } from '../SearchRepository/styles';
 
@@ -13,7 +13,7 @@ interface Props {
 
 const Fighter: FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState(false);
-  const { fighters, setFighters } = useContext(RepositoryContext);
+  const { fighters, setFighters } = useRepository();
 
   const Icon = selected ? FaCheck : FaPlus;
 

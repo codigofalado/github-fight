@@ -1,16 +1,15 @@
-/* eslint-disable no-confusing-arrow */
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 
 import Layout from '~/Layout';
 
-import RepositoryContext from '~/contexts/RepositoryContext';
+import { useRepository } from '~/contexts/repository';
 
 import trophy from '~/assets/trophy.svg';
 
 import { Header, Podium, Rank, Position } from './styles';
 
 const Result: FC = () => {
-  const { owner, repoName, fighters } = useContext(RepositoryContext);
+  const { owner, repoName, fighters } = useRepository();
 
   const calculatePoints = fighters.map(fighter => {
     const usersReacted = fighter.reactions.nodes.map(node => node.user.login);

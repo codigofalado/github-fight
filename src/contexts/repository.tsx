@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -57,5 +57,14 @@ const RepositoryProvider: FC = ({ children }) => {
   );
 };
 
-export { RepositoryProvider };
-export default RepositoryContext;
+function useRepository(): ContextValue {
+  const context = useContext(RepositoryContext);
+
+  if (!context) {
+    throw Error('useRepository must be used within an RepositoryProvider');
+  }
+
+  return context;
+}
+
+export { RepositoryProvider, useRepository };
