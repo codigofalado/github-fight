@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSpinner } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -97,8 +97,8 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
           value={text}
           onChange={handleInputChange}
         />
-        <SearchButton onClick={handleSearch}>
-          <FaSearch size={24} />
+        <SearchButton onClick={handleSearch} isLoading={loading}>
+          {loading ? <FaSpinner size={24} /> : <FaSearch size={24} />}
         </SearchButton>
       </div>
 

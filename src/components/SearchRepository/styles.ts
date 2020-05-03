@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import button, { ButtonProps } from '~/styles/button';
 import card from '~/styles/card';
@@ -38,9 +38,22 @@ export const Container = styled(card)`
   }
 `;
 
+interface SearchButtonProps extends ButtonProps {
+  isLoading?: boolean;
+}
+
+const roulette = keyframes`
+  from {
+    transform: rotate(0) translateZ(0);
+  }
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+`;
+
 export const SearchButton = styled.button.attrs({
   type: 'button',
-})<ButtonProps>`
+})<SearchButtonProps>`
   ${button}
 
   display: flex;
@@ -62,5 +75,13 @@ export const SearchButton = styled.button.attrs({
 
       pointer-events: none;
       box-shadow: none;
+    `};
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      svg {
+        animation: ${roulette} 1.2s linear infinite;
+      }
     `};
 `;
