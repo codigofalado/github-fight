@@ -11,6 +11,7 @@ export interface Data {
     avatarUrl: string;
     login: string;
   };
+  url: string;
   name: string;
   description: string;
   pullRequests: Label;
@@ -27,22 +28,30 @@ const Repository: FC<Props> = ({ data }) => (
   <Container>
     <div>
       <img src={data.owner.avatarUrl} alt={data.owner.login} />
-      <h2>{data.name}</h2>
+      <h2>
+        <a href={data.url} target="_black" rel="noopener noreferrer">
+          {data.name}
+        </a>
+      </h2>
       <p>{data.description}</p>
     </div>
 
     <ul>
       <li>
-        Stars <strong>{data.stars.totalCount}</strong>
+        Stars&nbsp;
+        <strong>{data.stars.totalCount}</strong>
       </li>
       <li>
-        Forks <strong>{data.forks.totalCount}</strong>
+        Forks&nbsp;
+        <strong>{data.forks.totalCount}</strong>
       </li>
       <li>
-        Issues <strong>{data.issues.totalCount}</strong>
+        Issues&nbsp;
+        <strong>{data.issues.totalCount}</strong>
       </li>
       <li>
-        Pull Requests <strong>{data.pullRequests.totalCount}</strong>
+        Pull Requests&nbsp;
+        <strong>{data.pullRequests.totalCount}</strong>
       </li>
     </ul>
   </Container>

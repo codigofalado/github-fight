@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 export interface PullRequest {
   id: string;
+  url: string;
   title: string;
   number: number;
   author: {
@@ -31,16 +32,7 @@ interface ContextValue {
   setFighters: SetState<PullRequest[]>;
 }
 
-const RepositoryContext = React.createContext<ContextValue>({
-  owner: '',
-  repoName: '',
-  pullCount: 0,
-  fighters: [],
-  setOwner: () => {},
-  setRepoName: () => {},
-  setPullCount: () => {},
-  setFighters: () => {},
-});
+const RepositoryContext = React.createContext<ContextValue>({} as ContextValue);
 
 const RepositoryProvider: FC = ({ children }) => {
   const [owner, setOwner] = useState('');
@@ -66,5 +58,14 @@ const RepositoryProvider: FC = ({ children }) => {
   );
 };
 
-export { RepositoryProvider };
-export default RepositoryContext;
+function useRepository(): ContextValue {
+  const context = useContext(RepositoryContext);
+
+  if (!context) {
+    throw Error('useRepository must be used within an RepositoryProvider');
+  }
+
+  return context;
+}
+
+export { RepositoryProvider, useRepository };

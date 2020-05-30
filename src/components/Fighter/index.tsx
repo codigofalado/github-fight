@@ -1,7 +1,7 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 
-import RepositoryContext, { PullRequest } from '~/contexts/RepositoryContext';
+import { PullRequest, useRepository } from '~/hooks/repository';
 
 import { SearchButton } from '../SearchRepository/styles';
 
@@ -13,11 +13,11 @@ interface Props {
 
 const Fighter: FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState(false);
-  const { fighters, setFighters } = useContext(RepositoryContext);
+  const { fighters, setFighters } = useRepository();
 
   const Icon = selected ? FaCheck : FaPlus;
 
-  function toogleSelected() {
+  function toogleSelected(): void {
     if (!selected && !fighters.includes(data)) {
       setFighters([...fighters, data]);
     }
@@ -34,9 +34,7 @@ const Fighter: FC<Props> = ({ data }) => {
       <img src={data.author.avatarUrl} alt={data.author.login} />
       <div>
         <h2>{data.author.login}</h2>
-        <p>
-          #{data.number} - {data.title}
-        </p>
+        <p>{`#${data.number} - ${data.title}`}</p>
       </div>
       <SearchButton onClick={toogleSelected}>
         <Icon size={24} />

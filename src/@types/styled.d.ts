@@ -12,6 +12,7 @@ declare module 'styled-components' {
       background: string;
       shadow: string;
       card: string;
+      error: string;
     };
   }
 }

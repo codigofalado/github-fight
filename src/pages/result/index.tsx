@@ -1,16 +1,15 @@
-/* eslint-disable no-confusing-arrow */
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 
 import Layout from '~/Layout';
 
-import RepositoryContext from '~/contexts/RepositoryContext';
+import { useRepository } from '~/hooks/repository';
 
 import trophy from '~/assets/trophy.svg';
 
 import { Header, Podium, Rank, Position } from './styles';
 
 const Result: FC = () => {
-  const { owner, repoName, fighters } = useContext(RepositoryContext);
+  const { owner, repoName, fighters } = useRepository();
 
   const calculatePoints = fighters.map(fighter => {
     const usersReacted = fighter.reactions.nodes.map(node => node.user.login);
@@ -23,7 +22,7 @@ const Result: FC = () => {
   });
 
   const placing = calculatePoints.sort((prev, current) =>
-    prev.points > current.points ? -1 : 1
+    prev.points > current.points ? -1 : 1,
   );
 
   return (
@@ -38,9 +37,7 @@ const Result: FC = () => {
       <Podium>
         {placing.slice(0, 3).map((fighter, index) => (
           <li key={`podium_${fighter.id}`}>
-            <strong>
-              {index + 1}º - {fighter.points}
-            </strong>
+            <strong>{`${index + 1}º - ${fighter.points}`}</strong>
             {fighter.author.login}
           </li>
         ))}
@@ -48,18 +45,20 @@ const Result: FC = () => {
       <Rank>
         {placing.map((fighter, index) => (
           <Position key={fighter.id}>
-            <span>{index + 1}º</span>
-            <img src={fighter.author.avatarUrl} alt={fighter.author.login} />
-            <div>
-              <h3>{fighter.author.login}</h3>
-              <p>
-                #{fighter.number} - {fighter.title}
-              </p>
-            </div>
-            <div>
-              <span>{fighter.points}</span>
-              <strong>Votos</strong>
-            </div>
+            <a href={fighter.url} target="_black" rel="noopener noreferrer">
+              <span>{`${index + 1}º`}</span>
+              <img src={fighter.author.avatarUrl} alt={fighter.author.login} />
+
+              <div>
+                <h3>{fighter.author.login}</h3>
+                <p>{`#${fighter.number} - ${fighter.title}`}</p>
+              </div>
+
+              <div>
+                <span>{fighter.points}</span>
+                <strong>Votos</strong>
+              </div>
+            </a>
           </Position>
         ))}
       </Rank>

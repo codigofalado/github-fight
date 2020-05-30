@@ -22,7 +22,7 @@ const SEO: FC<Props> = ({ description, lang, meta, title }) => {
           }
         }
       }
-    `
+    `,
   );
 
   const metaDescription = description || site.meta.description;

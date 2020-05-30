@@ -11,15 +11,27 @@ export const Container = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    a {
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: ${({ theme }) => theme.colors.active};
+    }
   }
 
   img {
+    position: relative;
+
     width: 120px;
     height: 120px;
     margin-top: 48px;
 
     border-radius: 50%;
-    border: 4px solid ${({ theme }) => theme.colors.secundaryActive};
+
+    box-shadow: 0 0 0px 5px ${({ theme }) => theme.colors.card},
+      0 0 0px 8px ${({ theme }) => theme.colors.secundaryActive};
   }
 
   h2 {
