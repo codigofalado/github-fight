@@ -4,7 +4,7 @@ import Button from '~/components/Button';
 
 import logo from '~/assets/logo.svg';
 
-import { Container } from './styles';
+import { Container, ExternalAnchor } from './styles';
 
 const Home: FC = () => (
   <Container>
@@ -12,9 +12,14 @@ const Home: FC = () => (
 
     <div>
       <Button to="/battlefield">Start Battle</Button>
-      <Button to="#about" secundary disabled>
-        Know more
-      </Button>
+      <ExternalAnchor
+        href="https://github.com/codigofalado/github-fight"
+        target="_blank"
+        rel="noopener noreferrer"
+        secundary
+      >
+        Read more
+      </ExternalAnchor>
     </div>
   </Container>
 );
