@@ -152,3 +152,8 @@ export const Position = styled(card).attrs({
     transform: translateX(14px) translateZ(0);
   }
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;

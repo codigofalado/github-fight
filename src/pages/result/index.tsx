@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 
+import Button from '~/components/Button';
 import Layout from '~/Layout';
 
 import { useRepository } from '~/hooks/repository';
 
 import trophy from '~/assets/trophy.svg';
 
-import { Header, Podium, Rank, Position } from './styles';
+import { Header, Podium, Rank, Position, ButtonContainer } from './styles';
 
 const Result: FC = () => {
   const { owner, repoName, fighters } = useRepository();
@@ -42,6 +43,9 @@ const Result: FC = () => {
           </li>
         ))}
       </Podium>
+      <ButtonContainer>
+        <Button to="/battlefield">Start Over</Button>
+      </ButtonContainer>
       <Rank>
         {placing.map((fighter, index) => (
           <Position key={fighter.id}>
