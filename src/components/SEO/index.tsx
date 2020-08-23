@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import { useStaticQuery, graphql } from 'gatsby';
@@ -10,7 +10,7 @@ interface Props {
   title: string;
 }
 
-const SEO: FC<Props> = ({ description, lang, meta, title }) => {
+const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import Button from '~/components/Button';
 import SearchRepository from '~/components/SearchRepository';
@@ -7,7 +7,7 @@ import Layout from '~/Layout';
 import { Container } from './styles';
 import { ButtonGroup } from '~/styles/button';
 
-const Battlefield: FC = () => {
+const Battlefield: React.FC = () => {
   const [disabled, setDisabled] = useState(false);
 
   return (

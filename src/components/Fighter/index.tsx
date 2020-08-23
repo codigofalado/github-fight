@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 
 import { PullRequest, useRepository } from '~/hooks/repository';
@@ -11,7 +11,7 @@ interface Props {
   data: PullRequest;
 }
 
-const Fighter: FC<Props> = ({ data }) => {
+const Fighter: React.FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState(false);
   const { fighters, setFighters } = useRepository();
 

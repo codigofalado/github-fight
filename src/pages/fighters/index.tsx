@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -56,7 +56,7 @@ const repositoriesQuery = gql`
   }
 `;
 
-const Fighters: FC = () => {
+const Fighters: React.FC = () => {
   const { owner, repoName, pullCount, fighters } = useRepository();
 
   const { data, loading } = useQuery<QueryData>(repositoriesQuery, {

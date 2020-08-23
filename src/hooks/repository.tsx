@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -34,7 +34,7 @@ interface ContextValue {
 
 const RepositoryContext = React.createContext<ContextValue>({} as ContextValue);
 
-const RepositoryProvider: FC = ({ children }) => {
+const RepositoryProvider: React.FC = ({ children }) => {
   const [owner, setOwner] = useState('');
   const [repoName, setRepoName] = useState('');
   const [pullCount, setPullCount] = useState(0);

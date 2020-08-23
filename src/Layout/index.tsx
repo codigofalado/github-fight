@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import SEO from '~/components/SEO';
 
@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-const Layout: FC<Props> = ({ children, title }) => (
+const Layout: React.FC<Props> = ({ children, title }) => (
   <>
     <GlobalStyle />
     <SEO title={title} />

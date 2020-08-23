@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { FaSearch, FaSpinner } from 'react-icons/fa';
 
 import { useLazyQuery } from '@apollo/react-hooks';
@@ -44,7 +44,7 @@ const QUERY = gql`
   }
 `;
 
-const SearchRepository: FC<Props> = ({ setDisabled }) => {
+const SearchRepository: React.FC<Props> = ({ setDisabled }) => {
   const [text, setText] = useState('');
   const {
     owner,

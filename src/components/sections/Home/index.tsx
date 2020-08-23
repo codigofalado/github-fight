@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import Button from '~/components/Button';
 
@@ -6,7 +6,7 @@ import logo from '~/assets/logo.svg';
 
 import { Container, ExternalAnchor } from './styles';
 
-const Home: FC = () => (
+const Home: React.FC = () => (
   <Container>
     <img src={logo} alt="github fight logo" />
 

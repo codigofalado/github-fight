@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
@@ -11,7 +11,7 @@ interface Props {
   element: React.ReactNode;
 }
 
-export const wrapRootElement: FC<Props> = ({ element }) => (
+export const wrapRootElement: React.FC<Props> = ({ element }) => (
   <HelmetProvider>
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
