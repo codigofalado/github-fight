@@ -9,8 +9,8 @@ interface SiteMetaData {
       description: string;
       title: string;
       author: string;
-    }
-  }
+    };
+  };
 }
 
 interface SEOProps {

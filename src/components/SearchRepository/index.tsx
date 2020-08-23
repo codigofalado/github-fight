@@ -55,7 +55,7 @@ const SearchRepository: React.FC<Props> = ({ setDisabled }) => {
     setPullCount,
   } = useRepository();
 
-  const [getRepository, { data, loading, error }] = useLazyQuery<QueryData, {}>(
+  const [getRepository, { data, loading, error }] = useLazyQuery<QueryData>(
     QUERY,
     {
       variables: {

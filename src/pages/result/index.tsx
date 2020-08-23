@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '~/components/Button';
-import Layout from '~/Layout';
+import Layout from '~/components/Layout';
 
 import { useRepository } from '~/hooks/repository';
 

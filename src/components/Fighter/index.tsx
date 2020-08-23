@@ -4,7 +4,6 @@ import { FaPlus, FaCheck } from 'react-icons/fa';
 import { PullRequest, useRepository } from '~/hooks/repository';
 
 import { SearchButton } from '../SearchRepository/styles';
-
 import { Container } from './styles';
 
 interface Props {

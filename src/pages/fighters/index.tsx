@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 
 import Button from '~/components/Button';
 import Fighter from '~/components/Fighter';
-import Layout from '~/Layout';
+import Layout from '~/components/Layout';
 
 import { PullRequest, useRepository } from '~/hooks/repository';
 

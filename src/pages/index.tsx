@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Layout from '~/components/Layout';
 import Home from '~/components/sections/Home';
-import Layout from '~/Layout';
 
 const IndexPage: React.FC = () => (
   <Layout title="Home">
