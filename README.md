@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Your icon here" src="./src/assets/icon.png" width="100"/>
+  <img alt="Your icon here" src="./src/assets/images/icon.png" width="100"/>
 </p>
 <h1 align="center">
   Github Fight
