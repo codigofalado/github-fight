@@ -6,9 +6,9 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -19,12 +19,8 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "project": "./tsconfig.json",
-
-    "allowImportExportEverywhere": true,
-    "tsconfigRootDir": "."
+    "ecmaVersion": 11,
+    "sourceType": "module"
   },
   "plugins": [
     "react",
@@ -36,16 +32,8 @@
   "rules": {
     "prettier/prettier": "error",
 
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-
-    "react/prop-types": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-
-    "no-unused-expressions": "off",
-
-    "@typescript-eslint/camelcase": "off",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -53,7 +41,21 @@
       }
     ],
 
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+
+    "no-unused-expressions": "off",
     "import/prefer-default-export": "off",
+    "import/no-duplicates": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -70,20 +72,20 @@
         "groups": [
           "/^(react|styled-components)/",
           "module",
-          ["/^~/components/", "/^~/Layout/"],
-          "/^~/hooks/",
-          "/^~/contexts/",
+          "/^.*components/",
+          "/^.*Layout/",
+          "/^.*hooks/",
+          "/^.*pages/",
+          "/^.*service/",
           ["parent", "sibling", "index"],
-          "/^~/assets/",
-          "/^(~|.)/styles/"
+          "/^.*assets/",
+          "/^.*styles/"
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
   },
   "settings": {
-    "import/extensions": ["js", "jsx", ".ts", ".tsx"],
-
     "import/resolver": {
       "typescript": {}
     }

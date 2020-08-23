@@ -1,9 +1,8 @@
-import React, { FC } from 'react';
-import { ApolloProvider } from 'react-apollo';
-import { HelmetProvider } from 'react-helmet-async';
+import React from 'react';
+import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
 
-import { client } from '../src/hooks/apollo';
+import apolloClient from '../src/service/apolloClient';
 import { RepositoryProvider } from '../src/hooks/repository';
 import theme from '../src/styles/theme';
 
@@ -11,12 +10,10 @@ interface Props {
   element: React.ReactNode;
 }
 
-export const wrapRootElement: FC<Props> = ({ element }) => (
-  <HelmetProvider>
-    <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <RepositoryProvider>{element}</RepositoryProvider>
-      </ApolloProvider>
-    </ThemeProvider>
-  </HelmetProvider>
+export const wrapRootElement: React.FC<Props> = ({ element }) => (
+  <ThemeProvider theme={theme}>
+    <ApolloProvider client={apolloClient}>
+      <RepositoryProvider>{element}</RepositoryProvider>
+    </ApolloProvider>
+  </ThemeProvider>
 );

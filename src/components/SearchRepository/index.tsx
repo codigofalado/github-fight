@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { FaSearch, FaSpinner } from 'react-icons/fa';
 
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 
 import { useRepository } from '~/hooks/repository';
@@ -44,7 +44,7 @@ const QUERY = gql`
   }
 `;
 
-const SearchRepository: FC<Props> = ({ setDisabled }) => {
+const SearchRepository: React.FC<Props> = ({ setDisabled }) => {
   const [text, setText] = useState('');
   const {
     owner,
@@ -55,7 +55,7 @@ const SearchRepository: FC<Props> = ({ setDisabled }) => {
     setPullCount,
   } = useRepository();
 
-  const [getRepository, { data, loading, error }] = useLazyQuery<QueryData, {}>(
+  const [getRepository, { data, loading, error }] = useLazyQuery<QueryData>(
     QUERY,
     {
       variables: {

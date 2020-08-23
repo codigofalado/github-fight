@@ -2,17 +2,17 @@ require('dotenv').config();
 
 const path = require('path');
 
-const siteMetadata = require('./config/metadata');
+const siteMetadata = require('./src/assets/data/metadata.json');
 
 module.exports = {
   siteMetadata,
   plugins: [
-    'gatsby-plugin-react-helmet-async',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/assets`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     'gatsby-transformer-sharp',
@@ -20,13 +20,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Github Fight',
+        name: siteMetadata.title,
         short_name: 'Github Fight',
         start_url: '/',
         background_color: '#B23F42',
         theme_color: '#B23F42',
         display: 'minimal-ui',
-        icon: 'src/assets/icon.png',
+        icon: 'src/assets/images/icon.png',
       },
     },
     {
@@ -36,7 +36,7 @@ module.exports = {
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
         headers: {
-          Authorization: `token ${process.env.GITHUB_TOKEN}`,
+          Authorization: `token ${process.env.GATSBY_GITHUB_TOKEN}`,
         },
       },
     },

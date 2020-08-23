@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import Button from '~/components/Button';
-import Layout from '~/Layout';
+import Layout from '~/components/Layout';
 
 import { useRepository } from '~/hooks/repository';
 
@@ -9,17 +9,14 @@ import trophy from '~/assets/trophy.svg';
 
 import { Header, Podium, Rank, Position, ButtonContainer } from './styles';
 
-const Result: FC = () => {
+const Result: React.FC = () => {
   const { owner, repoName, fighters } = useRepository();
 
   const calculatePoints = fighters.map(fighter => {
     const usersReacted = fighter.reactions.nodes.map(node => node.user.login);
     const points = Array.from(new Set(usersReacted)).length;
 
-    return {
-      ...fighter,
-      points,
-    };
+    return { ...fighter, points };
   });
 
   const placing = calculatePoints.sort((prev, current) =>
@@ -35,6 +32,7 @@ const Result: FC = () => {
         </div>
         <img src={trophy} alt="Trophy icon" />
       </Header>
+
       <Podium>
         {placing.slice(0, 3).map((fighter, index) => (
           <li key={`podium_${fighter.id}`}>
@@ -43,9 +41,11 @@ const Result: FC = () => {
           </li>
         ))}
       </Podium>
+
       <ButtonContainer>
         <Button to="/battlefield">Start Over</Button>
       </ButtonContainer>
+
       <Rank>
         {placing.map((fighter, index) => (
           <Position key={fighter.id}>

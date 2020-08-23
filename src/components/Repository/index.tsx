@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Container } from './styles';
 
@@ -24,7 +24,7 @@ interface Props {
   data: Data;
 }
 
-const Repository: FC<Props> = ({ data }) => (
+const Repository: React.FC<Props> = ({ data }) => (
   <Container>
     <div>
       <img src={data.owner.avatarUrl} alt={data.owner.login} />

@@ -98,7 +98,7 @@ run `yarn start` or `npm start` command to start a local server and get a test! 
 
 ### :package: Packages
 - [Apollo](https://www.apollographql.com/docs/react/)
-- [React Helmet Async](https://github.com/staylor/react-helmet-async)
+- [React Helmet](https://github.com/nfl/react-helmet)
 - [React Icons](https://react-icons.netlify.com/#/)
 - [Styled Compoments](https://www.styled-components.com/)
 - [Polished](https://polished.js.org/)
@@ -113,7 +113,7 @@ run `yarn start` or `npm start` command to start a local server and get a test! 
 - [Page Creator](https://www.gatsbyjs.org/packages/gatsby-plugin-page-creator/)
 - [Polished](https://www.gatsbyjs.org/packages/gatsby-plugin-polished/)
 - [Preload Fonts](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/)
-- [React Helmet Async](https://www.gatsbyjs.org/packages/gatsby-plugin-sharp/)
+- [React Helmet](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/)
 - [Sharp](https://www.gatsbyjs.org/packages/gatsby-plugin-sharp/)
 - [Styled Components](https://www.gatsbyjs.org/packages/gatsby-plugin-styled-components/)
 

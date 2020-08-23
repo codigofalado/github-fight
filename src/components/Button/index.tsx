@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Container, Props } from './styles';
 
-const Button: FC<Props> = ({
+const Button: React.FC<Props> = ({
   children,
   className,
   secundary,

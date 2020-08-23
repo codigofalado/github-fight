@@ -1,11 +1,11 @@
-import React, { FC, useEffect } from 'react';
+import React, { useMemo } from 'react';
 
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 
 import Button from '~/components/Button';
 import Fighter from '~/components/Fighter';
-import Layout from '~/Layout';
+import Layout from '~/components/Layout';
 
 import { PullRequest, useRepository } from '~/hooks/repository';
 
@@ -24,7 +24,7 @@ interface QueryData {
   };
 }
 
-const QUERY = gql`
+const repositoriesQuery = gql`
   query repository($owner: String!, $repoName: String!, $pullCount: Int!) {
     repository(owner: $owner, name: $repoName) {
       url
@@ -56,16 +56,27 @@ const QUERY = gql`
   }
 `;
 
-const Fighters: FC = () => {
+const Fighters: React.FC = () => {
   const { owner, repoName, pullCount, fighters } = useRepository();
 
-  const { data, loading } = useQuery<QueryData>(QUERY, {
+  const { data, loading } = useQuery<QueryData>(repositoriesQuery, {
     variables: {
       owner,
       repoName,
       pullCount: pullCount > 100 ? 100 : pullCount,
     },
   });
+
+  /**
+   * Removing the PRs by dependabot
+   */
+  const pullRequests = useMemo(
+    () =>
+      data?.repository.pullRequests.nodes.filter(
+        pr => pr.author.login !== 'dependabot',
+      ),
+    [data],
+  );
 
   const ButtonIsDisabled = fighters.length <= 1;
 
@@ -76,9 +87,7 @@ const Fighters: FC = () => {
         <ul>
           {data &&
             !loading &&
-            data.repository.pullRequests.nodes.map(pull => (
-              <Fighter data={pull} key={pull.id} />
-            ))}
+            pullRequests?.map(pull => <Fighter data={pull} key={pull.id} />)}
         </ul>
         <ButtonGroup>
           <Button to="/battlefield">Back</Button>
