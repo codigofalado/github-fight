@@ -27,8 +27,24 @@ const Result: React.FC = () => {
     <Layout title="Result">
       <Header>
         <div>
-          <h1>{owner}</h1>
-          <h2>{repoName}</h2>
+          <h1>
+            <a
+              href={`https://github.com/${owner}`}
+              target="_black"
+              rel="noopener noreferrer"
+            >
+              {owner}
+            </a>
+          </h1>
+          <h2>
+            <a
+              href={`https://github.com/${owner}/${repoName}`}
+              target="_black"
+              rel="noopener noreferrer"
+            >
+              {repoName}
+            </a>
+          </h2>
         </div>
         <img src={trophy} alt="Trophy icon" />
       </Header>

@@ -13,11 +13,11 @@ export interface PullRequest {
   };
   reactions: {
     totalCount: number;
-    nodes: {
+    nodes: Array<{
       user: {
         login: string;
       };
-    }[];
+    }>;
   };
 }
 

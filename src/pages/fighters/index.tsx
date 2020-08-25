@@ -9,7 +9,7 @@ import Layout from '~/components/Layout';
 
 import { PullRequest, useRepository } from '~/hooks/repository';
 
-import { Container } from './styles';
+import { Container, SelectAllButton } from './styles';
 import { ButtonGroup } from '~/styles/button';
 
 interface QueryData {
@@ -57,13 +57,13 @@ const repositoriesQuery = gql`
 `;
 
 const Fighters: React.FC = () => {
-  const { owner, repoName, pullCount, fighters } = useRepository();
+  const { owner, repoName, pullCount, fighters, setFighters } = useRepository();
 
   const { data, loading } = useQuery<QueryData>(repositoriesQuery, {
     variables: {
       owner,
       repoName,
-      pullCount: pullCount > 100 ? 100 : pullCount,
+      pullCount: Math.min(pullCount, 100),
     },
   });
 
@@ -80,15 +80,30 @@ const Fighters: React.FC = () => {
 
   const ButtonIsDisabled = fighters.length <= 1;
 
+  const isToSelect = fighters !== pullRequests;
+
+  function selectAllFighters(): void {
+    if (pullRequests) {
+      setFighters(isToSelect ? pullRequests : []);
+    }
+  }
+
   return (
     <Layout title="Fighters">
       <Container>
-        <h1>Select the Fighters</h1>
+        <div>
+          <h1>Select the Fighters</h1>
+          <SelectAllButton onClick={selectAllFighters}>
+            {`${isToSelect ? 'S' : 'Des'}elect all`}
+          </SelectAllButton>
+        </div>
+
         <ul>
           {data &&
             !loading &&
             pullRequests?.map(pull => <Fighter data={pull} key={pull.id} />)}
         </ul>
+
         <ButtonGroup>
           <Button to="/battlefield">Back</Button>
           <Button to="/result" disabled={ButtonIsDisabled}>

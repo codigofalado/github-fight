@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 
 import { PullRequest, useRepository } from '~/hooks/repository';
@@ -11,8 +11,12 @@ interface Props {
 }
 
 const Fighter: React.FC<Props> = ({ data }) => {
-  const [selected, setSelected] = useState(false);
   const { fighters, setFighters } = useRepository();
+
+  const selected = useMemo(
+    () => !!fighters.find(fighter => fighter.id === data.id),
+    [fighters, data.id],
+  );
 
   const Icon = selected ? FaCheck : FaPlus;
 
@@ -25,7 +29,7 @@ const Fighter: React.FC<Props> = ({ data }) => {
       setFighters(fighters.filter(fighter => fighter.id !== data.id));
     }
 
-    setSelected(!selected);
+    // setSelected(!selected);
   }
 
   return (
