@@ -13,14 +13,25 @@ export const Header = styled.header`
     margin: 32px 0;
   }
 
-  h1 {
+  h1 a {
     font-size: 3.6rem;
     margin-bottom: 8px;
   }
 
-  h2 {
+  h2 a {
     color: ${({ theme }) => theme.colors.secundaryText};
     font-size: 2.4rem;
+  }
+
+  h1,
+  h2 {
+    a {
+      transition: color 0.3s;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.active};
+      }
+    }
   }
 
   img {
